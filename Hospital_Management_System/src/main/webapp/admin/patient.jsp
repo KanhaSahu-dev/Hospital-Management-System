@@ -8,24 +8,35 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Insert title here</title>
-    <%@ include file="../components/bootstrap.jsp" %> 
+    <title>List of Patients</title>
+    <%@ include file="../components/bootstrap.jsp" %>
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .header {
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
     <%@ include file="../components/admin_navbar.jsp" %>
-    
     <%
-        UserDao UserDao = new UserDao();
-        List<User> list = UserDao.fetchAll();
-        request.setAttribute("UserList", list);  // Corrected attribute name
-    %> 
-    
-    <h1>List of Patients:</h1>
-    <h2>
-        
+        UserDao userDao = new UserDao();
+        List<User> list = userDao.fetchAll();
+        request.setAttribute("UserList", list);
+    %>
+    <div class="container">
+        <div class="header text-center">
+            <h1>List of Patients</h1>
+        </div>
         <c:forEach var="i" items="${UserList}">
-            ${i.name}<br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>${i.name}</h2>
+                </div>
+            </div>
         </c:forEach>
-    </h2>
+    </div>
 </body>
 </html>

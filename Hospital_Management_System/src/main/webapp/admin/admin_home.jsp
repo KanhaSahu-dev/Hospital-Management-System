@@ -7,17 +7,32 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin Home Page</title>
 <%@ include file="../components/bootstrap.jsp" %>
+<style>
+    .container {
+        margin-top: 50px;
+    }
+    .header {
+        margin-bottom: 30px;
+    }
+</style>
 </head>
 <body>
 <%@ include file="../components/admin_navbar.jsp" %>
 <%
-	DoctorDao doctorDao = new DoctorDao();
-	List<Doctor> listOfDoctors = doctorDao.fetchAll();
+    DoctorDao doctorDao = new DoctorDao();
+    List<Doctor> listOfDoctors = doctorDao.fetchAll();
 %>
-<h1 class="text-center">Welcome to Admin Home Page</h1>
-	
-	<h2>No of Doctors <%= listOfDoctors.size()%></h2>
+<div class="container">
+    <div class="header text-center">
+        <h1>Welcome to Admin Home Page</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Number of Doctors: <%= listOfDoctors.size() %></h2>
+        </div>
+    </div>
+</div>
 </body>
 </html>
